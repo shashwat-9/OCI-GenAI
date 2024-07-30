@@ -31,6 +31,7 @@ searches, where the search function focuses on the meaning of the text that it i
 results based on keywords. Embedding makes it easier for the machine to understand the pieces of text.
  - The embedding models are MultiLingual model. That is, we can use multiple languages across multiple queries, e.g. 
 french query on english document. These models generally supports 100+ languages.
+
 ![PreTrainedModels](/PreTrainedModels.png)
 
 ### Fine Tuning
@@ -425,3 +426,104 @@ concurrently.
 in a dedicated AI cluster.
  - This architecture results in minimal overhead when switching between models derived from the same base model
 ![InferenceServingWithMinimalOverhead](/InferenceServingWithMinimalOverhead.png)
+
+### Dedicated AI clusters sizing and pricing
+
+#### Dedicated AI cluster Units
+ - For fine-tuning and for hosting different clusters are used.
+![SizingAndPricingOfAIClusters](/SizingAndPricingOfAIClusters.png)
+![AIClusterUnitSizing](/AIClusterUnitSizing.png)
+
+#### Dedicated AI Clusters Sizing
+ 1. Fine-tuning Dedicated AI Cluster
+    - Requires two units for the base model chosen.
+    - Fine-tuning a model required more GPUs than hosting a model(therefore, two units)
+    - The same fine-tuning cluster can be used to fine-tune several models
+ 2. Hosting Dedicated AI Cluster
+    - Requires one unit for the base model chosen.
+    - Same cluster can host up to 50 different fine-tuned models(using T-few fine-tuning)
+    - Can create up to 50 endpoints that point to the different models hosted on the same hosting cluster
+
+#### Example Pricing
+![ExamplePricing](/ExamplePricing.png)
+ - The Min hosting allowed is 744 unit-hours/cluster, i.e. we have to run the cluster for minimum a month
+ - Min Fine-tuning commitment: 1 unit-hour/fine-tuning job
+
+### Demo: Dedicated AI Clusters
+ - On the home panel, you can click on the dedicated AI clusters, and then Create Dedicated AI clusters.
+ - To enable the service limits on our account for dedicated AI clusters, for that, on the top menu button click on 
+Governance and Administration -> Tenancy management -> limits, quotas and usage
+ - Here we can choose for which model do we want stats for. We choose Generative AI, and there we see the quotas for
+different cluster sizes
+ - We can click on the "Create dedicated AI clusters" button and put the name, purpose(like fine-tuning, hosting), choose
+the required model and click on create after checking the ack box.
+ - We create different clusters for fine-tuning and inferencing. When clicked on the former, we have a button called
+create models and on the later we have a button create endpoints.
+
+### Fine-tuning configurations
+In the fine-tuning configurations, we have the following parameters to set
+ - Training Methods
+   1. Vanilla: Traditional fine-tuning method
+   2. T-few : Efficient fine-tuning method
+ - Hyperparameters
+   1. Total Training Epochs
+   2. Learning Rate
+   3. Training Batch Size
+   4. Early Stopping Patience
+   5. Early Stopping Threshold
+   6. Log Model metrics interval in steps
+   7. Number of last layers (Vanilla)
+
+ - All of the above hyperparameters are valid for T-few and vanilla fine-tuning, but only Number of last layer is valid 
+for Vanilla only.
+
+#### Explanations
+ 1. Total Training Epochs -> The number of iterations through the entire training dataset; for example; 1 epoch means
+that the model is trained using the entire training dataset one time. Default value is 3.
+ 2. Batch size -> The number of samples processed before updating the model. Some default values are mentioned in the below
+diagram. In other words, it is the size of the subset of the training data, that is used to compute the gradient during 
+updating the weights.
+ 3. Learning rate -> The rate at which model parameters are updated after each batch. Default is 0.1 for T-few
+In simpler words this hyperparameter controls how much we are adjusting the weights of our network wrt loss of gradient.
+ 4. Early stopping threshold -> The minimum improvement in loss required to prevent premature termination of the training
+process. Default is 0.01
+ 5. Early stopping patience -> The tolerance for stagnation in the loss metric before stopping the training process. 
+Default is 6. In simpler terms, how much to wait before stopping the process such that no improvements are observed in 
+the model.
+ 6. Log model metrics interval in steps -> Determines how frequently to log model metrics. Every step is logged
+for the first 20 steps and then follows this parameter for log frequency
+![FineTuningParameterTFineTune](/FineTuningParameterTFineTune.png)
+![UnderstandingFineTuningResults](/UnderstandingFineTuningResults.png)
+
+#### Demo: Fine-tuning and Custom Models
+ - We can create custom models by fine-tuning the base pre-trained custom models with our own custom dataset.
+ - Click on custom models on the GenAI overview page
+ - The format that OCI GenAI accepts is called jsonl file or jsonLine file. In this format, new data is at every new line
+ - The format that OCI requires has two fields, 1. prompt 2. completion. All the data must be UTF-8 encoded.
+ - In the custom models section, we can click on the custom models button
+   1. We can click on a "create a new model" or "create new version", fill in the details.
+   2. Then we can choose the base model, Fine-tuning method, and the cluster name. We can further tune the hyperparameters.
+   3. We can then provide the file or the link to that file.
+ - Then the fine-tuning process begins.
+ - After the process ends, We can look at the Accuracy and loss values.
+
+#### Demo: Inference using Endpoint
+ - We can click on the endpoint tab on the left panel on the Gen AI dashboard. Create endpoint for the required cluster.
+ - We can view this endpoint on the playground in the model section.
+
+### OCI Generative AI security
+
+#### Dedicated GPU and RDMA Network
+ - Security and privacy of customer workloads is an essential design tenet.
+ - GPUs allocated for a customer's generative AI tasks are isolated from other GPUs.
+![GPU&RDMANetwork](/GPU&RDMANetwork.png)
+
+#### Models Endpoints
+![ModelEndpoints](/ModelEndpoints.png)
+
+#### Customer Data and Model Isolation
+![CustomerDataAndModelIsolation](/CustomerDataAndModelIsolation.png)
+
+#### Generative AI leverages OCI Security Services
+![OCISecurityServices](/OCISecurityServices.png)
+
