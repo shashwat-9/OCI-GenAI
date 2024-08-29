@@ -32,14 +32,14 @@ results based on keywords. Embedding makes it easier for the machine to understa
  - The embedding models are MultiLingual model. That is, we can use multiple languages across multiple queries, e.g. 
 french query on english document. These models generally supports 100+ languages.
 
-![PreTrainedModels](/PreTrainedModels.png)
+![PreTrainedModels](./PreTrainedModels.png)
 
 ### Fine Tuning
  - A key capability of OCI Gen AI is to fine tune these pre-trained foundational models.
  - It basically means optimizing a pretrained foundational model on a smaller domain specific dataset.
    1. Improve Model performance on a specific task
    2. Improve Model Efficiency
-![CustomModels](/CustomModels.png)
+![CustomModels](./CustomModels.png)
  - Use when a pretrained model doesn't perform your task well or you want to teach it something new.
  - OCI Generative AI uses the T-few fine-tuning to enable fast and efficient customizations.
  - T-few is a fine-tuning technique, where we update only a portion of model's weight. Doing so gives us better accuracy
@@ -50,7 +50,7 @@ and lower cost.
  - Gen AI service establishes a dedicated AI cluster, which includes dedicated GPUs and an exclusive RDMA cluster network
 for connecting the GPUs.
  - The GPUs allocated for a customer's generative AI task are isolated from other GPUs.
-![GenAIClusters](/GenAIClusters.png)
+![GenAIClusters](./GenAIClusters.png)
 
 ### Demo: Generative AI service Walkthrough
  - Open the OCI account-> click on the navigation menu -> Analytics & AI -> AI Services -> Generative AI
@@ -200,7 +200,7 @@ sentences verbatim, whereas summaries with low extractiveness tend to paraphrase
 ##### Word Embeddings
  - Word Embeddings capture properties of the word
  - Vectors actually are a sequence of numbers where each number represent some properties in n-dimension
-![WordEmbeddings](/WordEmbeddings.png)
+![WordEmbeddings](./WordEmbeddings.png)
 
 ##### Semantic Similarity
  - Embeddings are basically conversion of words into vector of numbers.
@@ -208,20 +208,20 @@ sentences verbatim, whereas summaries with low extractiveness tend to paraphrase
  - cosine and dot products similarly can be used to compute numeric similarity
  - Embeddings that are numerically similar are also semantically similar
  - E.g. embedding vector of "Puppy" will be more similar to "Dog" than that of "Lion"
-![SemanticSimilarity](/SemanticSimilarity.png)
+![SemanticSimilarity](./SemanticSimilarity.png)
 
 ##### Sentence Embeddings
  - A sentence embedding associates every sentence with a vector of numbers
  - Similar sentences are assigned to similar vectors, different sentences are assigned to different vectors
-![SentenceEmbedding](/SentenceEmbedding.png)
+![SentenceEmbedding](./SentenceEmbedding.png)
 
 ##### Embedding use case
  - Vector databases are capable of automating the cosine similarity and doing the nearest match searches for that database.
  - When a query is fed into 
-![EmbeddingUseCases](/EmbeddingUseCases.png)
+![EmbeddingUseCases](./EmbeddingUseCases.png)
 
 ##### Embedding Models in Generative AI
-![EmbeddingModelsInGenAI](/EmbeddingModelsinGenAI.png)
+![EmbeddingModelsInGenAI](./EmbeddingModelsinGenAI.png)
  - Cohere.embed-english converts English text into vector embeddings
  - Cohere.embed-english-light is the smaller and faster version of embed-english
  - Cohere.embed-multilingual is the state-of-the-art multilingual embedding model that can convert text in over 100
@@ -246,7 +246,7 @@ quality of document. This means ranking high quality documents at the top, which
         2. Model creates a 1024 dimensional vector for each embedding
         3. Max 512 tokens per embedding
 
-![EmbeddingModels](/EmbeddingModels.png)
+![EmbeddingModels](./EmbeddingModels.png)
  - A maximum of 96 inputs are allowed for each run, and each input must have less than 512 tokens
 
 ### Demo: Summarization and Embedding Models
@@ -333,7 +333,7 @@ Like maybe some other answers along with what is required.
        - Recommended when a pretrained model doesn't perform your task well or when you want to teach it something new
        - Adapt to specific style and tone, and learn human preference
 
-![FineTuningTechnique](/FineTuningTechnique.png)
+![FineTuningTechnique](./FineTuningTechnique.png)
 
 ##### Fine-tuning Benefits
  - Improve Model Performance on specific tasks
@@ -349,14 +349,14 @@ Like maybe some other answers along with what is required.
 responses. Grounded means, the text is in some document.
  - RAGs do not require custom models
 
-![CustomLLMsCategorization](/CustomLLMsCategorization.png)
+![CustomLLMsCategorization](./CustomLLMsCategorization.png)
 
 ##### Customize LLMs with your data
  - Prompt Engineering is the easiest to start with; test and learn quickly.
  - If you need more context, then use Retrieval Augmented Generation(RAG).
  - If you need more instruction following, then use fine-tuning
 
-![CustomizeLLMswithData](/CustomizeLLMswithData.png)
+![CustomizeLLMswithData](./CustomizeLLMswithData.png)
 
 ### Fine-Tuning and Inference in OCI Generative AI
  - A model is fine-tuned by taking a pretrained foundational model and providing additional training using custom data.
@@ -364,7 +364,7 @@ responses. Grounded means, the text is in some document.
 based on new input data.
  - With Language models, inference refers to the model receiving new text as input and generating output text based on 
 what it has learned during training and fine-tuning.
-![FineTuning&Inferencing](/FineTuning&Inferencing.png)
+![FineTuning&Inferencing](./FineTuning&Inferencing.png)
 
 #### Fine-tuning workflow in OCI Generative AI
  - Custom Model: A model that you can create by using a Pretrained Model as a base and using your own dataset to 
@@ -409,7 +409,7 @@ to updating all layers.
  - Supplementary set of model weights is generated (~0.01% of the baseline model's size)
  - Updates to the weights are confined to a specific group of transformer layers.(T-few transformer layers), saving
 substantial training time and cost.
-![T_FewFineTuningProcess](/T_FewFineTuningProcess.png)
+![T_FewFineTuningProcess](./T_FewFineTuningProcess.png)
 
 #### Reducing Inference Costs
  - Inference is computationally expensive
@@ -418,21 +418,21 @@ concurrently.
  - This approach of models sharing the same GPU resources reduces teh expenses associated with inference
  - Endpoints can be deactivated to stop serving requests and reactivated later.
 
-![InferencingCost](/InferencingCost.png)
+![InferencingCost](./InferencingCost.png)
 
 #### Inference serving with minimal overhead
  - GPU memory is limited, so switching between models can incur significant overhead due to reloading the full GPU memory
  - These models share the majority of weights, with only slight variations; can be efficiently deployed on the same GPUs
 in a dedicated AI cluster.
  - This architecture results in minimal overhead when switching between models derived from the same base model
-![InferenceServingWithMinimalOverhead](/InferenceServingWithMinimalOverhead.png)
+![InferenceServingWithMinimalOverhead](./InferenceServingWithMinimalOverhead.png)
 
 ### Dedicated AI clusters sizing and pricing
 
 #### Dedicated AI cluster Units
  - For fine-tuning and for hosting different clusters are used.
-![SizingAndPricingOfAIClusters](/SizingAndPricingOfAIClusters.png)
-![AIClusterUnitSizing](/AIClusterUnitSizing.png)
+![SizingAndPricingOfAIClusters](./SizingAndPricingOfAIClusters.png)
+![AIClusterUnitSizing](./AIClusterUnitSizing.png)
 
 #### Dedicated AI Clusters Sizing
  1. Fine-tuning Dedicated AI Cluster
@@ -445,7 +445,7 @@ in a dedicated AI cluster.
     - Can create up to 50 endpoints that point to the different models hosted on the same hosting cluster
 
 #### Example Pricing
-![ExamplePricing](/ExamplePricing.png)
+![ExamplePricing](./ExamplePricing.png)
  - The Min hosting allowed is 744 unit-hours/cluster, i.e. we have to run the cluster for minimum a month
  - Min Fine-tuning commitment: 1 unit-hour/fine-tuning job
 
@@ -492,8 +492,8 @@ Default is 6. In simpler terms, how much to wait before stopping the process suc
 the model.
  6. Log model metrics interval in steps -> Determines how frequently to log model metrics. Every step is logged
 for the first 20 steps and then follows this parameter for log frequency
-![FineTuningParameterTFineTune](/FineTuningParameterTFineTune.png)
-![UnderstandingFineTuningResults](/UnderstandingFineTuningResults.png)
+![FineTuningParameterTFineTune](./FineTuningParameterTFineTune.png)
+![UnderstandingFineTuningResults](./UnderstandingFineTuningResults.png)
 
 #### Demo: Fine-tuning and Custom Models
  - We can create custom models by fine-tuning the base pre-trained custom models with our own custom dataset.
@@ -516,14 +516,14 @@ for the first 20 steps and then follows this parameter for log frequency
 #### Dedicated GPU and RDMA Network
  - Security and privacy of customer workloads is an essential design tenet.
  - GPUs allocated for a customer's generative AI tasks are isolated from other GPUs.
-![GPU&RDMANetwork](/GPU&RDMANetwork.png)
+![GPU&RDMANetwork](./GPU&RDMANetwork.png)
 
 #### Models Endpoints
-![ModelEndpoints](/ModelEndpoints.png)
+![ModelEndpoints](./ModelEndpoints.png)
 
 #### Customer Data and Model Isolation
-![CustomerDataAndModelIsolation](/CustomerDataAndModelIsolation.png)
+![CustomerDataAndModelIsolation](./CustomerDataAndModelIsolation.png)
 
 #### Generative AI leverages OCI Security Services
-![OCISecurityServices](/OCISecurityServices.png)
+![OCISecurityServices](./OCISecurityServices.png)
 

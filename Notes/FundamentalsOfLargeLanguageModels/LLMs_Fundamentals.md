@@ -44,14 +44,14 @@ Two major architectures for LMs :
  - Models of each type come in a variety of sizes(# of parameters). Sizes in context of Models is number of trainable 
 parameters.
 
-![Model Ontology](/ModelOntology.png)
+![Model Ontology](./ModelOntology.png)
  - There is no reason why we couldn't build a large encoder, it's just that we don't need to.
  - When models are too small, they tend to be poor text generators. However, with advanced techniques, it may be possible
 to make better text generators with smaller models.
 
 ## Encoders
  - Models that convert a sequence of words to an embedding(vector representation).
-![Embedding](/EmbeddingByEncoders.png)
+![Embedding](./EmbeddingByEncoders.png)
  - Example includes MiniLM, Embed-light, BERT, RoBERTA, DistillBERT, SBERT
 
 ## Decoders
@@ -61,15 +61,15 @@ to make better text generators with smaller models.
  - Decoder only produce a single token at a time. So, if we want some text generated, we append the output token in the
 sequence provided, and again invoke the decoder. Though it is computationally expensive.
  - Decoders shouldn't be used for embedding.
-![Decoders](/GenerationsByDecoders.png)
+![Decoders](./GenerationsByDecoders.png)
 
 ## Encoders-Decoders
  - Encoders-decoders - encodes a sequence of words and use the encoding + to output a next word.
  - Examples includes - T5, UL2, BART, ...
  - The below image is for a translator.
-![Encoders&Decoders](/Encoders&Decoders.png)
+![Encoders&Decoders](./Encoders&Decoders.png)
  - Not all models are suitable for all tasks. The below image gives an overview on this :
-![ArchitectureAtGlance](/ArchitectureAtGlance.png)
+![ArchitectureAtGlance](./ArchitectureAtGlance.png)
 
 
 # Prompting and Prompt Engineering
@@ -115,28 +115,28 @@ to complete. Here, none of the parameter is changing, instead it refers to const
 tasks that the model should complete.
 
  - k-shot prompting - explicitly providing k examples of the intended task in the prompt
-![3shotPrompting.png](/3shotPrompting.png)
+![3shotPrompting.png](./3shotPrompting.png)
  - This example is from GPT-3 model. This is a 3-shot prompting, as there are 3 examples.
  - _prompt_ word is generally overloaded. Here in the above paper, the last line is the prompt.
  - __Few-shot prompting is widely believed to improve results over 0-shot prompting__
-![ExampleOfPrompts](/ExampleOfDIfferentPrompts.png)
+![ExampleOfPrompts](./ExampleOfDIfferentPrompts.png)
 
  - If we give a big problem at once, and ask the answer, it might fail, as the decoder is generating one word at a time.
  - Rather, we should break it into smaller problems while prompting, so that the next word generated and thus the answer
 is correct. The one example is chain of thought and LeastToMost prompting given below.
-![ChainOfThought](/ChainOfThought.png)
+![ChainOfThought](./ChainOfThought.png)
  - The Least To Most prompting works better than teh chain of thought. This prompting, increasingly solves the problem.
-![LeastToMost](/LeastToMost.png)
+![LeastToMost](./LeastToMost.png)
  - Step-Back - prompt the LLM to identify high-level concepts pertinent to a specific task. It is observed that if
 asking a question of physics and chemistry, if the related equations and equations are emitted first, the results are
 accurate.
-![Step-Back](/Step-Back.png)
+![Step-Back](./Step-Back.png)
 
 ## Issues with Prompting
 Here we will discuss, how prompting can be used to elicit unintended or even harmful behaviour from a model.
  - Prompt Injection(jailBreaking) - to deliberately provide an LLM with input that attempts to cause it to ignore 
 instructions, cause harm, or behave contrary to deployment expectations.
-![PromptInjection](/PromptInjection.png)
+![PromptInjection](./PromptInjection.png)
  - Due to these and many such attacks, the LLMs must be safeguarded, so that unnecessary details doesn't gets leaked out.
 
 ## Training
@@ -155,10 +155,10 @@ training is required.
 can be used for training.
     4. Continual pre-training -> It is same as fine-tuning but the data fed to the model is random and un-labelled, and
 the model is supposed to predict the next word continually.
-![TrainingTechniques](/TrainingTechniques.png)
+![TrainingTechniques](./TrainingTechniques.png)
 
 ### Cost of Training
-![CostOfTraining](/CostOfTraining.png)
+![CostOfTraining](./CostOfTraining.png)
 
 
 ## Decoding
@@ -178,11 +178,11 @@ the model is supposed to predict the next word continually.
 ### Greedy Decoding
  - Picks the highest probability word at each step
  - Naive yet effective method
-![GreedyDecoding](/GreedyDecoding.png)
+![GreedyDecoding](./GreedyDecoding.png)
 
 ### Non-Deterministic Decoding
  - Picks randomly among a high probability candidate at each step.
-![NonDeterministicDecoding](/NonDeterministicDecoding.png)
+![NonDeterministicDecoding](./NonDeterministicDecoding.png)
 
 #### Temperature
  - When decoding temperature is a (hyper) parameter that modulates the distribution over vocabulary.

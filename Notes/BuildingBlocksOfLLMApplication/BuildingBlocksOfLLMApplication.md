@@ -18,7 +18,7 @@ external data source.
 
 #### RAG Framework
 
-![RAGFramework](/RAGFramework.png)
+![RAGFramework](./RAGFramework.png)
 
 ##### Retriever
  - Function -> Sources relevant information from a large corpus or database.
@@ -62,20 +62,20 @@ different part of response.
 ### RAG Pipeline
  - The RAG architecture combines the retrieval based model with a generation based model to enhance the text generated.
  - The first phase is ingestion, where documents are ingested into system
-![RAGPipeline](/RAGPipeline.png)
+![RAGPipeline](./RAGPipeline.png)
 
 ### RAG Application
  - RAG Applications works by using the prompt with the chat history called the enhanced prompt and is fed into the embedding
 model to do a similarity search into the db, maybe fetching private information from db, and then generates the information
 enhanced prompt called Augmented Prompt which is fed into the LLM to get Highly Accurate Response.
-![RAGApplication](/RAGApplication.png)
+![RAGApplication](./RAGApplication.png)
 
 ### RAG Evaluation
  - Although RAG has the most updated information, yet hallucinations can't be avoided.
  - The Retrieval could fail to retrieve the sufficient context or get the relevant one.
  - The generated response could be mostly influenced by the LLM training data and not the retrieved document.
  - Maybe every process works out fine yet the response fails to address user's query.
-![RAGEvaluation](/RAGEvaluation.png)
+![RAGEvaluation](./RAGEvaluation.png)
  - By minimising the above 3 parameters, the RAG application can minimise hallucinations
 
 ## Vector Databases
@@ -85,7 +85,7 @@ enhanced prompt called Augmented Prompt which is fed into the LLM to get Highly 
 vector space.
  - This db is adept in searching the meaning and nearest similar word in the search space.
  - Many of these db uses a distributed architecture to handle the memory and computation requirements.
-![EmbeddingDistance](/EmbeddingDistance.png)
+![EmbeddingDistance](./EmbeddingDistance.png)
 
 #### LLMs vs LLMs without RAG
  - LLMs without RAG doesn't use vector databases, rather uses pre-trained corpus of data. It may or may not use Fine-tuning
@@ -94,7 +94,7 @@ vector space.
  - Even search engines uses vector space models for text document for similarity searches and ranking
  - E-commerce websites uses vector dbs for recommending similar items to users. They're also used in computer vision,
 bio-information and anomaly detection
-![LLMvsRAGbasedLLMs](/LLMvsRAGbasedLLMs.png)
+![LLMvsRAGbasedLLMs](./LLMvsRAGbasedLLMs.png)
 
 #### Vectors
  - A vector is a sequence of numbers called dimensions, used to capture the important "feature" of the data
@@ -129,7 +129,7 @@ to facilitate faster search at the cost of accuracy.
 efficient search, storage and retrieval operations.
  - Querying is the step, where the similar searches to the given query is found and is either returned or put into 
 post-processing.
-![VectorDatabaseWorkflow](/VectorDatabaseWorkflow.png)
+![VectorDatabaseWorkflow](./VectorDatabaseWorkflow.png)
  - Vector databases features :
    1. Better Accuracy 
    2. Lower Latency
@@ -140,7 +140,7 @@ post-processing.
  - Address the hallucination (i.e., inaccuracy) problem inherent in LLM responses.
  - Augment prompt with enterprise-specific content to produce better responses.
  - Avoid exceeding LLM token limits by using most relevant content.
-![RoleOfVectorDatabases](/RoleOfVectorDatabases.png)
+![RoleOfVectorDatabases](./RoleOfVectorDatabases.png)
 
 #### Role of vector database with LLMs
  - Cheaper than fine-tuning LLMs, which can be expensive to update.
@@ -151,7 +151,7 @@ post-processing.
  - Keywords are words used to match with the terms people are searching for, when looking for products, services or general information
  - Simplest form of search based on exact matches of the user-provided keywords in the database or index.
  - Evaluates document based on the presence and frequency of the query term. For example, BM25 is such an algorithm.
-![keywordSearch](/keywordSearch.png)
+![keywordSearch](./keywordSearch.png)
 
 
 #### Semantic Search
@@ -164,13 +164,13 @@ and reorders them to improve the relevance in order to improve the quality of re
  - Embeddings represent the meaning of text as a list of numbers
  - Capture the essence of the data in a lower-dimensional space while maintaining the semantic relationships and meaning
 
-![DenseRetrieval](/DenseRetrieval.png)
+![DenseRetrieval](./DenseRetrieval.png)
 ##### Dense Retrieval
  - Relies on embeddings of both queries and documents to identify and rank relevant documents for a given query
  - Enables the retrieval system to understand and match based on the contextual similarities between queries and documents.
 
 ##### Reranking
-![Reranking](/Reranking.png)
+![Reranking](./Reranking.png)
  - Here the results are already ranked by some basic ranking algorithms and then it is further re-ranked to assign a relevant score
 to each response pairs.
  - It works by training the model to ranks positive answers more and negative answers less.

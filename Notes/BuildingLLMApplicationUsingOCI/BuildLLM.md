@@ -27,7 +27,7 @@
  - The way LLMs work is that a question/prompt is provided to the LLM, and as an add-on we can retrieve documents from storage
 and can also add previous chat history from the memory and then prompt the LLM. The LLM then generate the answer, which
 can get stored in the chat memory.
-![ChatbotArchitecture](/ChatbotArchitecture.png)
+![ChatbotArchitecture](./ChatbotArchitecture.png)
 
 #### OCI Generative AI and LangChain Integration
  - Using the OCI Generative AI service you can access pretrained models or create and host your own fine-tuned custom models
@@ -49,7 +49,7 @@ generative service, vector databases, document loaders and many others.
    4. Chains
    5. Vector Stores
    6. Document Loaders
-![LangChainApplication](/LangChainApplication.png)
+![LangChainApplication](./LangChainApplication.png)
 
 ## Models, Prompts and Chains
  - The heart of the LLM application is the Large Language Model itself.
@@ -58,7 +58,7 @@ generative service, vector databases, document loaders and many others.
 string completion
    2. Chat Models -> Chat models are often backed by LLMs but are tuned specifically for having converstaions.
 They take a list of chat messages as input and return and AI message as output.
-![LangChainModels](/LangChainModels.png)
+![LangChainModels](./LangChainModels.png)
 
 #### LangChain Prompt Template
  - Langchain have pre-built classes that we will use to create prompts.
@@ -69,7 +69,7 @@ They take a list of chat messages as input and return and AI message as output.
 2. Chat Prompt Template -> Using this we can input a list of message to chat model. Each chat message is associated with
 content, and an additional parameter called role.
 
-![LangChainPromptTemplate](/LangChainPromptTemplate.png)
+![LangChainPromptTemplate](./LangChainPromptTemplate.png)
 
 #### LangChain Chains
  - LangChain provides framework for creating chains of component including LLMs and other type of components
@@ -77,7 +77,7 @@ content, and an additional parameter called role.
    1. Using LCEL -> Create chains declaratively using LCEL. LangChain Expression Language, or LCEL, is a declarative way
 to easily compose chains together.
    2. Legacy -> Create chains using Python classes like LLM Chain and others.
-![SettingUpDevEnv](/SettingUpDevEnv.png)
+![SettingUpDevEnv](./SettingUpDevEnv.png)
 
  - In pycharm dev IDE, we can install python packages by clicking on python packages from the bottom bar.
  - Packages required in this project are : OCI, Oracle IDEs, LangChain, LangSmith, Chroma DB, Wise, Pydantic, Streamlit,
